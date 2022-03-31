@@ -9,10 +9,10 @@
         <div class="col-9">
             <div class="d-flex justify-content-between align-items-baseline pb-3 pt-3 pe-5">
                 <h2>{{ $user->username }}</h2>
-                <a href="#">Add new Post</a>
+                <a href="/p/create">Add new Post</a>
             </div>
             <div class="d-flex">
-                <div class="pe-5"><strong>xxxk</strong> posts</div>
+                <div class="pe-5"><strong>{{ $user->posts->count() }}</strong> posts</div>
                 <div class="pe-5"><strong>xxxx</strong> followers</div>
                 <div class="pe-5"><strong>xxxx</strong> following</div>
             </div>
@@ -23,27 +23,13 @@
     </div>
 
     <div class="row ps-5 pt-5 ms-5">
-        <div class="col-4">
-            <img src="https://www.22places.de/images/2016/01/spiegelung-landschaftsfotografie.jpg" style="height: 280px; width: 280px">
-        </div>
-        <div class="col-4">
-            <img src="https://www.22places.de/images/2016/01/spiegelung-landschaftsfotografie.jpg" style="height: 280px; width: 280px">
-        </div>
-        <div class="col-4">
-            <img src="https://www.22places.de/images/2016/01/spiegelung-landschaftsfotografie.jpg" style="height: 280px; width: 280px">
-        </div>
-    </div>
-    <div class="row ps-5 pt-5 ms-5">
-        <div class="col-4">
-            <img src="https://www.22places.de/images/2016/01/spiegelung-landschaftsfotografie.jpg" style="height: 280px; width: 280px">
-        </div>
-        <div class="col-4">
-            <img src="https://www.22places.de/images/2016/01/spiegelung-landschaftsfotografie.jpg" style="height: 280px; width: 280px">
-        </div>
-        <div class="col-4">
-            <img src="https://www.22places.de/images/2016/01/spiegelung-landschaftsfotografie.jpg" style="height: 280px; width: 280px">
-        </div>
+        @foreach($user->posts as $post)
+            <div class="col-4 pb-5">
+                <a href="/p/{{ $post_id }}">
+                    <img src="/storage/{{ $post->image }}" style="height: 280px; width: 280px">
+                </a>
+            </div>
+        @endforeach
     </div>
 </div>
 @endsection
-

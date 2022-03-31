@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+//use App\Http\Controllers\PostsController; -> wird nicht gebraucht
 
 /*
 |--------------------------------------------------------------------------
@@ -20,10 +21,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/p/create', [App\Http\Controllers\PostsController::class, 'create']);
-Route::post('/p', [App\Http\Controllers\PostsController::class, 'store']);
+Route::get('/p/{post}', 'App\Http\Controllers\PostsController@show');
+Route::get('/p/create', 'App\Http\Controllers\PostsController@create');
+Route::post('/p', 'App\Http\Controllers\PostsController@store');
 
-Route::get('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'index'])->name('profile.show');
+Route::get('/profile/{user}', 'App\Http\Controllers\ProfilesController@index')->name('profile.show');
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
