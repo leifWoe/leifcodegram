@@ -20,7 +20,6 @@ class PostsController extends Controller
 
     public function store()
     {
-        //return view('posts.create');
         $data = request()->validate([
             'caption' => 'required',
             'image' => ['required', 'image'],
@@ -41,7 +40,6 @@ class PostsController extends Controller
 
     public function show(\App\Models\Post $post)
     {
-        //return view('posts.show', compact('post'));
-        dd($post);
+        return view('posts.show', compact('post'));
     }
 }
