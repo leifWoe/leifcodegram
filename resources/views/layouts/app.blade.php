@@ -63,6 +63,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">
+                                        Profil
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -88,5 +91,4 @@
 </body>
 </html>
 
-{{--TODO wenn von laravel seite auf login gedrückt wird und regrister muss auf die richtige seite geleitet werden--}}
-
+{{--TODO: dropdown menü "Profil" -link --}}
