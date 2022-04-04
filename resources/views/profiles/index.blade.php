@@ -4,14 +4,23 @@
 <div class="container">
     <div class="row">
         <div class="col-3 p-sm-5">
-            <img src="https://toppng.com/uploads/preview/instagram-default-profile-picture-11562973083brycehrmyv.png" class="rounded-circle" style="height: 150px">
+            <img src="{{ $user->profile->profileImage() }}" class="rounded-circle w-75 h-100" style="max-height: 168px">
         </div>
         <div class="col-9">
-            <div class="d-flex justify-content-between align-items-baseline pb-3 pt-3 pe-5">
-                <h2>{{ $user->username }}</h2>
-                <a href="/create">Add new Post</a>
+            <div class="pb-3 pt-3">
+                <div class="d-flex align-items-center">
+                    <h2>{{ $user->username }}</h2>
+                        <!-- -->
+                    <follow-button user-id={{ $user->id }}></follow-button>
+                </div>
+
+                @can('update', $user->profile)
+                    <a href="/create" class="pe-5 ps-5">Add new Post</a>
+
+                    <a href="/profile/{{ $user->id }}/edit">Edit Profile</a>
+                @endcan
             </div>
-            <a href="/profile/{{ $user->id }}/edit">Edit Profile</a>
+
             <div class="d-flex">
                 <div class="pe-5"><strong>{{ $user->posts->count() }}</strong> posts</div>
                 <div class="pe-5"><strong>xxxx</strong> followers</div>
@@ -19,7 +28,7 @@
             </div>
             <div class="pt-4"><strong>{{ $user->profile->title }}</strong></div>
             <div><p>{{ $user->profile->description }}</p></div>
-            <div><strong><a href="{{ $user->profile->url }}">{{ $user->profile->url ?? 'N/A' }}</a></strong></div>
+            <div><strong><a href="{{ $user->profile->url }}">{{ $user->profile->url }}</a></strong></div>
         </div>
     </div>
 
